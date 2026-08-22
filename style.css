@@ -373,71 +373,35 @@ body {
 }
 
 /* ══════════════════════
-   PHOTO COLLAGE
+   PHOTO GALLERY
 ══════════════════════ */
-.collage {
-  background: linear-gradient(to bottom, #FAF6F0 0%, #F5EFEB 100%);
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  padding: 0;
   border-top: 2px solid var(--gold);
-  border-bottom: 2px solid var(--gold);
-  padding: 45px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  overflow: hidden;
+  background: var(--navy-deep);
+}
+
+.gallery-item {
   position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
 }
 
-.collage::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 80%);
-}
-
-.collage-photo {
-  background: var(--white);
-  padding: 10px 10px 30px;
-  box-shadow:
-    0 10px 30px rgba(8, 18, 37, 0.12),
-    0 2px 8px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.collage-photo img {
+.gallery-item img {
   display: block;
-  width: 200px;
-  height: 250px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
-  object-position: center;
-  border-radius: 2px;
+  object-position: top center;
+  transition: transform 0.5s ease;
 }
 
-/* Polaroid-style rotations */
-.c1 {
-  transform: rotate(-3deg) translateY(5px);
-}
-
-.c2 {
-  transform: rotate(1deg) translateY(-8px);
-  z-index: 2;
-}
-
-.c3 {
-  transform: rotate(4deg) translateY(8px);
-}
-
-/* Hover states */
-.collage-photo:hover {
-  transform: scale(1.06) rotate(0deg) translateY(-10px);
-  z-index: 10;
-  box-shadow:
-    0 20px 45px rgba(8, 18, 37, 0.22),
-    0 8px 16px rgba(0, 0, 0, 0.1);
-  border-color: var(--gold);
+.gallery-item:hover img {
+  transform: scale(1.05);
 }
 
 
@@ -589,30 +553,9 @@ body {
     font-size: 0.92rem;
   }
 
-  /* Collage elements responsive stack */
-  .collage {
-    flex-wrap: wrap;
-    gap: 15px;
-    padding: 30px 10px;
-  }
-
-  .collage-photo {
-    padding: 6px 6px 20px;
-  }
-
-  .collage-photo img {
-    width: 140px;
-    height: 180px;
-  }
-
-  .c1,
-  .c2,
-  .c3 {
-    transform: none !important;
-  }
-
-  .collage-photo:hover {
-    transform: scale(1.03) !important;
+  /* Gallery styling on mobile */
+  .gallery {
+    grid-template-columns: 1fr;
   }
 }
 
